@@ -5,20 +5,11 @@
     "source_file": {
       "type": "REPEAT",
       "content": {
-        "type": "SEQ",
+        "type": "CHOICE",
         "members": [
           {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "directive"
-              }
-            ]
-          },
-          {
-            "type": "PATTERN",
-            "value": "\\r?\\n"
+            "type": "SYMBOL",
+            "name": "directive"
           }
         ]
       }
@@ -29,6 +20,78 @@
         {
           "type": "SYMBOL",
           "name": "_clipboard_timeout_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_dll_load_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_error_std_out_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_hot_if_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_hot_if_timeout_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_hotstring_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_include_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_include_again_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_input_level_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_max_threads_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_max_threads_buffer_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_max_threads_per_hotkey_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_no_tray_icon_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_requires_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_single_instance_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_suspend_exempt_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_use_hook_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_warn_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_win_activate_force_directive"
         }
       ]
     },
@@ -45,6 +108,509 @@
           "name": "integer"
         }
       ]
+    },
+    "_dll_load_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "#DllLoad",
+          "flags": "i"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_directive_string"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_error_std_out_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "#ErrorStdOut",
+          "flags": "i"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_directive_string"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_hot_if_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "#HotIf",
+          "flags": "i"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_expression"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_hot_if_timeout_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "#HotIfTimeout",
+          "flags": "i"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "integer"
+        }
+      ]
+    },
+    "_hotstring_directive": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "#Hotstring",
+              "flags": "i"
+            },
+            {
+              "type": "PATTERN",
+              "value": "NoMouse",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "#Hotstring",
+              "flags": "i"
+            },
+            {
+              "type": "PATTERN",
+              "value": "EndChars",
+              "flags": "i"
+            },
+            {
+              "type": "IMMEDIATE_TOKEN",
+              "content": {
+                "type": "STRING",
+                "value": " "
+              }
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "REPEAT1",
+                "content": {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "PATTERN",
+                      "value": "[^`\\r\\n]",
+                      "flags": "i"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "escape"
+                    }
+                  ]
+                }
+              },
+              "named": true,
+              "value": "string"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "#Hotstring",
+              "flags": "i"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "REPEAT",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_hotstring_option"
+                }
+              },
+              "named": true,
+              "value": "string"
+            }
+          ]
+        }
+      ]
+    },
+    "_include_directive": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "#Include",
+              "flags": "i"
+            },
+            {
+              "type": "STRING",
+              "value": "<"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "IMMEDIATE_TOKEN",
+                "content": {
+                  "type": "PATTERN",
+                  "value": "[\\w\\\\.]+",
+                  "flags": "i"
+                }
+              },
+              "named": true,
+              "value": "string"
+            },
+            {
+              "type": "STRING",
+              "value": ">"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "#Include",
+              "flags": "i"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "[^\\r\\n\"' <>][^\\r\\n\"'<>]*|\"[^\\r\\n\"]*\"",
+                "flags": "i"
+              },
+              "named": true,
+              "value": "string"
+            }
+          ]
+        }
+      ]
+    },
+    "_include_again_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "#IncludeAgain",
+          "flags": "i"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[^\\r\\n\"' <>][^\\r\\n\"'<>]*|\"[^\\r\\n\"]*\"",
+            "flags": "i"
+          },
+          "named": true,
+          "value": "string"
+        }
+      ]
+    },
+    "_input_level_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "#InputLevel",
+          "flags": "i"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "integer"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_max_threads_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "#MaxThreads",
+          "flags": "i"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "integer"
+        }
+      ]
+    },
+    "_max_threads_buffer_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "#MaxThreadsBuffer",
+          "flags": "i"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_directive_boolean"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_max_threads_per_hotkey_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "#MaxThreadsPerHotkey",
+          "flags": "i"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "integer"
+        }
+      ]
+    },
+    "_no_tray_icon_directive": {
+      "type": "PATTERN",
+      "value": "#NoTrayIcon",
+      "flags": "i"
+    },
+    "_requires_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "#Requires",
+          "flags": "i"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_directive_string"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_single_instance_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "#SingleInstance",
+          "flags": "i"
+        },
+        {
+          "type": "PATTERN",
+          "value": "Force|Ignore|Prompt|Off",
+          "flags": "i"
+        }
+      ]
+    },
+    "_suspend_exempt_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "#SuspendExempt",
+          "flags": "i"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_directive_boolean"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_use_hook_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "#UseHook",
+          "flags": "i"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_directive_boolean"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_warn_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "#Warn",
+          "flags": "i"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "PATTERN",
+                  "value": "VarUnset|LocalSameAsGlobal|Unreachable|All",
+                  "flags": "i"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "STRING",
+                          "value": ","
+                        },
+                        {
+                          "type": "PATTERN",
+                          "value": "MsgBox|StdOut|OutputDebug|Off",
+                          "flags": "i"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_win_activate_force_directive": {
+      "type": "PATTERN",
+      "value": "#WinActivateForce",
+      "flags": "i"
+    },
+    "_directive_string": {
+      "type": "ALIAS",
+      "content": {
+        "type": "PATTERN",
+        "value": "[^\\r\\n\"' ][^\\r\\n\"']*|\"[^\\r\\n\"]*\"",
+        "flags": "i"
+      },
+      "named": true,
+      "value": "string"
+    },
+    "_directive_boolean": {
+      "type": "ALIAS",
+      "content": {
+        "type": "PATTERN",
+        "value": "true|false|0|1",
+        "flags": "i"
+      },
+      "named": true,
+      "value": "boolean"
+    },
+    "_hotstring_option": {
+      "type": "PATTERN",
+      "value": "[*?BCORSTXZ]0?|C1|P\\d+|S[IPE]",
+      "flags": "i"
+    },
+    "_expression": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "integer"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        }
+      ]
+    },
+    "string": {
+      "type": "PATTERN",
+      "value": "\"[^\\r\\n]\"",
+      "flags": "i"
+    },
+    "escape": {
+      "type": "PATTERN",
+      "value": "`[`;:{nrbtsvaf\"']",
+      "flags": "i"
     },
     "integer": {
       "type": "CHOICE",
@@ -68,12 +634,18 @@
       "type": "PATTERN",
       "value": "0x\\d+",
       "flags": "i"
+    },
+    "boolean": {
+      "type": "PATTERN",
+      "value": "true|false",
+      "flags": "i"
     }
   },
   "extras": [
     {
       "type": "PATTERN",
-      "value": "\\s"
+      "value": "[ \\t]+",
+      "flags": "i"
     }
   ],
   "conflicts": [],
