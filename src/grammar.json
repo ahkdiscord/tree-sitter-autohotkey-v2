@@ -3,8 +3,71 @@
   "name": "autohotkey_v2",
   "rules": {
     "source_file": {
-      "type": "STRING",
-      "value": "hello"
+      "type": "REPEAT",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "directive"
+              }
+            ]
+          },
+          {
+            "type": "PATTERN",
+            "value": "\\r?\\n"
+          }
+        ]
+      }
+    },
+    "directive": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_clipboard_timeout_directive"
+        }
+      ]
+    },
+    "_clipboard_timeout_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "#ClipboardTimeout",
+          "flags": "i"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "integer"
+        }
+      ]
+    },
+    "integer": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_decimal_integer"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_hexadecimal_integer"
+        }
+      ]
+    },
+    "_decimal_integer": {
+      "type": "PATTERN",
+      "value": "\\d+",
+      "flags": "i"
+    },
+    "_hexadecimal_integer": {
+      "type": "PATTERN",
+      "value": "0x\\d+",
+      "flags": "i"
     }
   },
   "extras": [
