@@ -1,0 +1,37 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "autohotkey_v2",
+      "camelcase": "AutohotkeyV2",
+      "title": "AutoHotkey v2",
+      "scope": "source.ahk2",
+      "file-types": ["ahkv2", "ahk", "ahk2"],
+      "injection-regex": "^autohotkey_v2$",
+      "class-name": "TreeSitterAutohotkeyV2"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Tree-Sitter Grammar for AutoHotkey v2",
+    "authors": [
+      {
+        "name": "AutoHotkey Discord Server",
+        "url": "https://discord.gg/Aat7KHmG7v"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/ahkdiscord/tree-sitter-autohotkey-v2"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
