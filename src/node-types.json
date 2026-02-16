@@ -28,6 +28,11 @@
     "fields": {}
   },
   {
+    "type": "hotstring",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "integer",
     "named": true,
     "fields": {}
@@ -53,6 +58,11 @@
     "fields": {}
   },
   {
+    "type": "options",
+    "named": false,
+    "fields": {}
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
@@ -67,6 +77,10 @@
         },
         {
           "type": "hotkey",
+          "named": true
+        },
+        {
+          "type": "hotstring",
           "named": true
         },
         {
@@ -121,5 +135,13 @@
   {
     "type": "name",
     "named": true
+  },
+  {
+    "type": "replacement",
+    "named": false
+  },
+  {
+    "type": "trigger",
+    "named": false
   }
 ]

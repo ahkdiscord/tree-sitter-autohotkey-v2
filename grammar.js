@@ -16,7 +16,7 @@ module.exports = grammar({
   word: $ => $.name,
 
   rules: {
-    source_file: $ => repeat(seq(choice($.directive, $.hotkey, $.label), /\r?\n/i)),
+    source_file: $ => repeat(seq(choice($.directive, $.hotkey, $.hotstring, $.label), /(\r?\n)+/i)),
 
     directive: $ =>
       choice(
@@ -86,6 +86,16 @@ module.exports = grammar({
     _hotkey_modifier_prefix: $ => /[<>]?[#!^+]|[*~$]/i,
     _hotkey_trigger: $ => choice($.name, /[^\r\n:]/i),
     _hotkey_modifier_suffix: $ => /up/i,
+
+    hotstring: $ =>
+      seq(
+        /:/i,
+        alias(repeat($._hotstring_option), "options"),
+        token.immediate(/:/i),
+        alias(choice(/[^\r\n:]+/i, $.escape), "trigger"),
+        token.immediate(/::/i),
+        alias(choice(/[^\r\n]+/i, $.escape), "replacement"),
+      ),
 
     label: $ => seq($.name, token.immediate(/:/i)),
 

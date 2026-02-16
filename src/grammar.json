@@ -21,13 +21,17 @@
               },
               {
                 "type": "SYMBOL",
+                "name": "hotstring"
+              },
+              {
+                "type": "SYMBOL",
                 "name": "label"
               }
             ]
           },
           {
             "type": "PATTERN",
-            "value": "\\r?\\n",
+            "value": "(\\r?\\n)+",
             "flags": "i"
           }
         ]
@@ -681,6 +685,82 @@
       "type": "PATTERN",
       "value": "up",
       "flags": "i"
+    },
+    "hotstring": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": ":",
+          "flags": "i"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_hotstring_option"
+            }
+          },
+          "named": false,
+          "value": "options"
+        },
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": ":",
+            "flags": "i"
+          }
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "[^\\r\\n:]+",
+                "flags": "i"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "escape"
+              }
+            ]
+          },
+          "named": false,
+          "value": "trigger"
+        },
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "::",
+            "flags": "i"
+          }
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "[^\\r\\n]+",
+                "flags": "i"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "escape"
+              }
+            ]
+          },
+          "named": false,
+          "value": "replacement"
+        }
+      ]
     },
     "label": {
       "type": "SEQ",
