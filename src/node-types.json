@@ -28,6 +28,21 @@
     "fields": {}
   },
   {
+    "type": "label",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
@@ -38,6 +53,10 @@
       "types": [
         {
           "type": "directive",
+          "named": true
+        },
+        {
+          "type": "label",
           "named": true
         }
       ]
@@ -67,6 +86,10 @@
     "named": false
   },
   {
+    "type": ":",
+    "named": false
+  },
+  {
     "type": "<",
     "named": false
   },
@@ -80,6 +103,10 @@
   },
   {
     "type": "escape",
+    "named": true
+  },
+  {
+    "type": "name",
     "named": true
   }
 ]

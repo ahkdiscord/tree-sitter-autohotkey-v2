@@ -10,6 +10,10 @@
           {
             "type": "SYMBOL",
             "name": "directive"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "label"
           }
         ]
       }
@@ -584,6 +588,22 @@
       "named": true,
       "value": "boolean"
     },
+    "label": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        },
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": ":"
+          }
+        }
+      ]
+    },
     "_hotstring_option": {
       "type": "PATTERN",
       "value": "[*?BCORSTXZ]0?|C1|P\\d+|S[IPE]",
@@ -601,6 +621,11 @@
           "name": "string"
         }
       ]
+    },
+    "name": {
+      "type": "PATTERN",
+      "value": "[a-z_][a-z0-9_]*",
+      "flags": "i"
     },
     "string": {
       "type": "PATTERN",

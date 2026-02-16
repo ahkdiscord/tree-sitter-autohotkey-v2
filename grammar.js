@@ -12,7 +12,7 @@ module.exports = grammar({
 
   extras: $ => [/[ \t]+/i],
   rules: {
-    source_file: $ => repeat(choice($.directive)),
+    source_file: $ => repeat(choice($.directive, $.label)),
 
     directive: $ =>
       choice(
@@ -72,9 +72,13 @@ module.exports = grammar({
     _directive_string: $ => alias(/[^\r\n"' ][^\r\n"']*|"[^\r\n"]*"/i, $.string),
     _directive_boolean: $ => alias(/true|false|0|1/i, $.boolean),
 
+    label: $ => seq($.name, token.immediate(":")),
+
     _hotstring_option: $ => /[*?BCORSTXZ]0?|C1|P\d+|S[IPE]/i,
 
     _expression: $ => choice($.integer, $.string),
+
+    name: $ => /[a-z_][a-z0-9_]*/i,
 
     string: $ => /"[^\r\n]"/i,
     escape: $ => /`[`;:{nrbtsvaf"']/i,
