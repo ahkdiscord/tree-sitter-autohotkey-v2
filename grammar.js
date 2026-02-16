@@ -5,6 +5,7 @@
  */
 
 /// <reference types="tree-sitter-cli/dsl" />
+/* eslint-disable */
 // @ts-check
 
 module.exports = grammar({
