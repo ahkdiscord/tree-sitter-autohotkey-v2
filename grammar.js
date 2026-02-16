@@ -99,7 +99,7 @@ module.exports = grammar({
 
     label: $ => seq($.name, token.immediate(/:/i)),
 
-    _hotstring_option: $ => /[*?BCORSTXZ]0?|C1|K\d+|P\d+|S[IPE]/i,
+    _hotstring_option: $ => /[*?BCORSTXZ]0?|C1|K-?\d+|P\d+|S[IPE]/i,
 
     _expression: $ => choice($.integer, $.string),
 
