@@ -49,12 +49,12 @@ module.exports = grammar({
       choice(
         seq(/#Hotstring/i, /NoMouse/i),
         // TODO: matching $.escape here breaks everything
-        seq(/#Hotstring/i, /EndChars/i, token.immediate(" "), alias(repeat1(choice(/[^`\r\n]/i, $.escape)), $.string)),
+        seq(/#Hotstring/i, /EndChars/i, token.immediate(/ /i), alias(repeat1(choice(/[^`\r\n]/i, $.escape)), $.string)),
         seq(/#Hotstring/i, alias(repeat($._hotstring_option), $.string)),
       ),
     _include_directive: $ =>
       choice(
-        seq(/#Include/i, "<", alias(token.immediate(/[\w\\.]+/i), $.string), ">"),
+        seq(/#Include/i, /</i, alias(token.immediate(/[\w\\.]+/i), $.string), />/i),
         seq(/#Include/i, alias(/[^\r\n"' <>][^\r\n"'<>]*|"[^\r\n"]*"/i, $.string)),
       ),
     _include_again_directive: $ => seq(/#IncludeAgain/i, alias(/[^\r\n"' <>][^\r\n"'<>]*|"[^\r\n"]*"/i, $.string)),
@@ -70,7 +70,7 @@ module.exports = grammar({
     _warn_directive: $ =>
       seq(
         /#Warn/i,
-        optional(seq(/VarUnset|LocalSameAsGlobal|Unreachable|All/i, optional(seq(",", /MsgBox|StdOut|OutputDebug|Off/i)))),
+        optional(seq(/VarUnset|LocalSameAsGlobal|Unreachable|All/i, optional(seq(/,/i, /MsgBox|StdOut|OutputDebug|Off/i)))),
       ),
     _win_activate_force_directive: $ => /#WinActivateForce/i,
     _directive_string: $ => alias(/[^\r\n"' ][^\r\n"']*|"[^\r\n"]*"/i, $.string),
@@ -81,13 +81,13 @@ module.exports = grammar({
         alias(repeat($._hotkey_modifier_prefix), "modifiers"),
         alias($._hotkey_trigger, "trigger"),
         alias(optional($._hotkey_modifier_suffix), "modifiers"),
-        token.immediate("::"),
+        token.immediate(/::/i),
       ),
     _hotkey_modifier_prefix: $ => /[<>]?[#!^+]|[*~$]/i,
     _hotkey_trigger: $ => choice($.name, /[^\r\n:]/i),
     _hotkey_modifier_suffix: $ => /up/i,
 
-    label: $ => seq($.name, token.immediate(":")),
+    label: $ => seq($.name, token.immediate(/:/i)),
 
     _hotstring_option: $ => /[*?BCORSTXZ]0?|C1|P\d+|S[IPE]/i,
 

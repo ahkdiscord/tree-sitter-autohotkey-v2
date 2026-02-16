@@ -38,13 +38,13 @@ enum ts_symbol_identifiers {
   aux_sym__hotstring_directive_token1 = 8,
   aux_sym__hotstring_directive_token2 = 9,
   aux_sym__hotstring_directive_token3 = 10,
-  anon_sym_SPACE = 11,
-  aux_sym__hotstring_directive_token4 = 12,
+  aux_sym__hotstring_directive_token4 = 11,
+  aux_sym__hotstring_directive_token5 = 12,
   aux_sym__include_directive_token1 = 13,
-  anon_sym_LT = 14,
-  aux_sym__include_directive_token2 = 15,
-  anon_sym_GT = 16,
-  aux_sym__include_directive_token3 = 17,
+  aux_sym__include_directive_token2 = 14,
+  aux_sym__include_directive_token3 = 15,
+  aux_sym__include_directive_token4 = 16,
+  aux_sym__include_directive_token5 = 17,
   aux_sym__include_again_directive_token1 = 18,
   aux_sym__input_level_directive_token1 = 19,
   aux_sym__max_threads_directive_token1 = 20,
@@ -58,16 +58,16 @@ enum ts_symbol_identifiers {
   aux_sym__use_hook_directive_token1 = 28,
   aux_sym__warn_directive_token1 = 29,
   aux_sym__warn_directive_token2 = 30,
-  anon_sym_COMMA = 31,
-  aux_sym__warn_directive_token3 = 32,
+  aux_sym__warn_directive_token3 = 31,
+  aux_sym__warn_directive_token4 = 32,
   sym__win_activate_force_directive = 33,
   aux_sym__directive_string_token1 = 34,
   aux_sym__directive_boolean_token1 = 35,
-  anon_sym_COLON_COLON = 36,
+  aux_sym_hotkey_token1 = 36,
   sym__hotkey_modifier_prefix = 37,
   aux_sym__hotkey_trigger_token1 = 38,
   sym__hotkey_modifier_suffix = 39,
-  anon_sym_COLON = 40,
+  aux_sym_label_token1 = 40,
   sym__hotstring_option = 41,
   sym_string = 42,
   sym_escape = 43,
@@ -117,13 +117,13 @@ static const char * const ts_symbol_names[] = {
   [aux_sym__hotstring_directive_token1] = "_hotstring_directive_token1",
   [aux_sym__hotstring_directive_token2] = "_hotstring_directive_token2",
   [aux_sym__hotstring_directive_token3] = "_hotstring_directive_token3",
-  [anon_sym_SPACE] = " ",
   [aux_sym__hotstring_directive_token4] = "_hotstring_directive_token4",
+  [aux_sym__hotstring_directive_token5] = "_hotstring_directive_token5",
   [aux_sym__include_directive_token1] = "_include_directive_token1",
-  [anon_sym_LT] = "<",
-  [aux_sym__include_directive_token2] = "string",
-  [anon_sym_GT] = ">",
+  [aux_sym__include_directive_token2] = "_include_directive_token2",
   [aux_sym__include_directive_token3] = "string",
+  [aux_sym__include_directive_token4] = "_include_directive_token4",
+  [aux_sym__include_directive_token5] = "string",
   [aux_sym__include_again_directive_token1] = "_include_again_directive_token1",
   [aux_sym__input_level_directive_token1] = "_input_level_directive_token1",
   [aux_sym__max_threads_directive_token1] = "_max_threads_directive_token1",
@@ -137,16 +137,16 @@ static const char * const ts_symbol_names[] = {
   [aux_sym__use_hook_directive_token1] = "_use_hook_directive_token1",
   [aux_sym__warn_directive_token1] = "_warn_directive_token1",
   [aux_sym__warn_directive_token2] = "_warn_directive_token2",
-  [anon_sym_COMMA] = ",",
   [aux_sym__warn_directive_token3] = "_warn_directive_token3",
+  [aux_sym__warn_directive_token4] = "_warn_directive_token4",
   [sym__win_activate_force_directive] = "_win_activate_force_directive",
   [aux_sym__directive_string_token1] = "string",
   [aux_sym__directive_boolean_token1] = "boolean",
-  [anon_sym_COLON_COLON] = "::",
+  [aux_sym_hotkey_token1] = "hotkey_token1",
   [sym__hotkey_modifier_prefix] = "_hotkey_modifier_prefix",
   [aux_sym__hotkey_trigger_token1] = "_hotkey_trigger_token1",
   [sym__hotkey_modifier_suffix] = "modifiers",
-  [anon_sym_COLON] = ":",
+  [aux_sym_label_token1] = "label_token1",
   [sym__hotstring_option] = "_hotstring_option",
   [sym_string] = "string",
   [sym_escape] = "escape",
@@ -196,13 +196,13 @@ static const TSSymbol ts_symbol_map[] = {
   [aux_sym__hotstring_directive_token1] = aux_sym__hotstring_directive_token1,
   [aux_sym__hotstring_directive_token2] = aux_sym__hotstring_directive_token2,
   [aux_sym__hotstring_directive_token3] = aux_sym__hotstring_directive_token3,
-  [anon_sym_SPACE] = anon_sym_SPACE,
   [aux_sym__hotstring_directive_token4] = aux_sym__hotstring_directive_token4,
+  [aux_sym__hotstring_directive_token5] = aux_sym__hotstring_directive_token5,
   [aux_sym__include_directive_token1] = aux_sym__include_directive_token1,
-  [anon_sym_LT] = anon_sym_LT,
-  [aux_sym__include_directive_token2] = sym_string,
-  [anon_sym_GT] = anon_sym_GT,
+  [aux_sym__include_directive_token2] = aux_sym__include_directive_token2,
   [aux_sym__include_directive_token3] = sym_string,
+  [aux_sym__include_directive_token4] = aux_sym__include_directive_token4,
+  [aux_sym__include_directive_token5] = sym_string,
   [aux_sym__include_again_directive_token1] = aux_sym__include_again_directive_token1,
   [aux_sym__input_level_directive_token1] = aux_sym__input_level_directive_token1,
   [aux_sym__max_threads_directive_token1] = aux_sym__max_threads_directive_token1,
@@ -216,16 +216,16 @@ static const TSSymbol ts_symbol_map[] = {
   [aux_sym__use_hook_directive_token1] = aux_sym__use_hook_directive_token1,
   [aux_sym__warn_directive_token1] = aux_sym__warn_directive_token1,
   [aux_sym__warn_directive_token2] = aux_sym__warn_directive_token2,
-  [anon_sym_COMMA] = anon_sym_COMMA,
   [aux_sym__warn_directive_token3] = aux_sym__warn_directive_token3,
+  [aux_sym__warn_directive_token4] = aux_sym__warn_directive_token4,
   [sym__win_activate_force_directive] = sym__win_activate_force_directive,
   [aux_sym__directive_string_token1] = sym_string,
   [aux_sym__directive_boolean_token1] = aux_sym__directive_boolean_token1,
-  [anon_sym_COLON_COLON] = anon_sym_COLON_COLON,
+  [aux_sym_hotkey_token1] = aux_sym_hotkey_token1,
   [sym__hotkey_modifier_prefix] = sym__hotkey_modifier_prefix,
   [aux_sym__hotkey_trigger_token1] = aux_sym__hotkey_trigger_token1,
   [sym__hotkey_modifier_suffix] = sym__hotkey_modifier_suffix,
-  [anon_sym_COLON] = anon_sym_COLON,
+  [aux_sym_label_token1] = aux_sym_label_token1,
   [sym__hotstring_option] = sym__hotstring_option,
   [sym_string] = sym_string,
   [sym_escape] = sym_escape,
@@ -308,11 +308,11 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = false,
     .named = false,
   },
-  [anon_sym_SPACE] = {
-    .visible = true,
+  [aux_sym__hotstring_directive_token4] = {
+    .visible = false,
     .named = false,
   },
-  [aux_sym__hotstring_directive_token4] = {
+  [aux_sym__hotstring_directive_token5] = {
     .visible = false,
     .named = false,
   },
@@ -320,19 +320,19 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = false,
     .named = false,
   },
-  [anon_sym_LT] = {
-    .visible = true,
-    .named = false,
-  },
   [aux_sym__include_directive_token2] = {
-    .visible = true,
-    .named = true,
-  },
-  [anon_sym_GT] = {
-    .visible = true,
+    .visible = false,
     .named = false,
   },
   [aux_sym__include_directive_token3] = {
+    .visible = true,
+    .named = true,
+  },
+  [aux_sym__include_directive_token4] = {
+    .visible = false,
+    .named = false,
+  },
+  [aux_sym__include_directive_token5] = {
     .visible = true,
     .named = true,
   },
@@ -388,11 +388,11 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = false,
     .named = false,
   },
-  [anon_sym_COMMA] = {
-    .visible = true,
+  [aux_sym__warn_directive_token3] = {
+    .visible = false,
     .named = false,
   },
-  [aux_sym__warn_directive_token3] = {
+  [aux_sym__warn_directive_token4] = {
     .visible = false,
     .named = false,
   },
@@ -408,8 +408,8 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
-  [anon_sym_COLON_COLON] = {
-    .visible = true,
+  [aux_sym_hotkey_token1] = {
+    .visible = false,
     .named = false,
   },
   [sym__hotkey_modifier_prefix] = {
@@ -424,8 +424,8 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = false,
   },
-  [anon_sym_COLON] = {
-    .visible = true,
+  [aux_sym_label_token1] = {
+    .visible = false,
     .named = false,
   },
   [sym__hotstring_option] = {
@@ -1758,13 +1758,13 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(336);
       END_STATE();
     case 220:
-      ACCEPT_TOKEN(anon_sym_SPACE);
+      ACCEPT_TOKEN(aux_sym__hotstring_directive_token4);
       END_STATE();
     case 221:
-      ACCEPT_TOKEN(aux_sym__hotstring_directive_token4);
+      ACCEPT_TOKEN(aux_sym__hotstring_directive_token5);
       END_STATE();
     case 222:
-      ACCEPT_TOKEN(aux_sym__hotstring_directive_token4);
+      ACCEPT_TOKEN(aux_sym__hotstring_directive_token5);
       if (lookahead == '\t' ||
           lookahead == ' ') ADVANCE(222);
       if (lookahead != 0 &&
@@ -1779,17 +1779,17 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 'a') ADVANCE(75);
       END_STATE();
     case 224:
-      ACCEPT_TOKEN(anon_sym_LT);
+      ACCEPT_TOKEN(aux_sym__include_directive_token2);
       END_STATE();
     case 225:
-      ACCEPT_TOKEN(anon_sym_LT);
+      ACCEPT_TOKEN(aux_sym__include_directive_token2);
       if (lookahead == '!' ||
           lookahead == '#' ||
           lookahead == '+' ||
           lookahead == '^') ADVANCE(289);
       END_STATE();
     case 226:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'A' ||
@@ -1802,7 +1802,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 227:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'B' ||
@@ -1815,7 +1815,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 228:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'B' ||
@@ -1828,7 +1828,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 229:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'C' ||
@@ -1841,7 +1841,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 230:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'D' ||
@@ -1854,7 +1854,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 231:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'D' ||
@@ -1867,7 +1867,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 232:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'D' ||
@@ -1880,7 +1880,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 233:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'E' ||
@@ -1893,7 +1893,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 234:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'E' ||
@@ -1906,7 +1906,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 235:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'F' ||
@@ -1919,7 +1919,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 236:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'F' ||
@@ -1934,7 +1934,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 237:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'G' ||
@@ -1947,7 +1947,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 238:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'G' ||
@@ -1960,7 +1960,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 239:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'H' ||
@@ -1973,7 +1973,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 240:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'M' ||
@@ -1986,7 +1986,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 241:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'N' ||
@@ -1999,7 +1999,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 242:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'O' ||
@@ -2012,7 +2012,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 243:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'O' ||
@@ -2025,7 +2025,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 244:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'O' ||
@@ -2038,7 +2038,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 245:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'O' ||
@@ -2051,7 +2051,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 246:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'P' ||
@@ -2064,7 +2064,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 247:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'R' ||
@@ -2077,7 +2077,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 248:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'S' ||
@@ -2090,7 +2090,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 249:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'S' ||
@@ -2103,7 +2103,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 250:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'S' ||
@@ -2116,7 +2116,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 251:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'T' ||
@@ -2129,7 +2129,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 252:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'T' ||
@@ -2142,7 +2142,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 253:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'T' ||
@@ -2155,7 +2155,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 254:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'T' ||
@@ -2168,7 +2168,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 255:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'U' ||
@@ -2181,7 +2181,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 256:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'U' ||
@@ -2194,7 +2194,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 257:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'U' ||
@@ -2207,7 +2207,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 258:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'U' ||
@@ -2220,7 +2220,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 259:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (lookahead == 'X' ||
@@ -2233,7 +2233,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 260:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           lookahead == '\\') ADVANCE(263);
       if (('0' <= lookahead && lookahead <= '9') ||
@@ -2244,7 +2244,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(260);
       END_STATE();
     case 261:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == 'X' ||
           lookahead == 'x') ADVANCE(262);
       if (('0' <= lookahead && lookahead <= '9')) ADVANCE(262);
@@ -2257,7 +2257,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(263);
       END_STATE();
     case 262:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (('0' <= lookahead && lookahead <= '9')) ADVANCE(262);
       if (lookahead == '.' ||
           ('A' <= lookahead && lookahead <= 'Z') ||
@@ -2268,7 +2268,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(263);
       END_STATE();
     case 263:
-      ACCEPT_TOKEN(aux_sym__include_directive_token2);
+      ACCEPT_TOKEN(aux_sym__include_directive_token3);
       if (lookahead == '.' ||
           ('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'Z') ||
@@ -2279,20 +2279,20 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(263);
       END_STATE();
     case 264:
-      ACCEPT_TOKEN(anon_sym_GT);
+      ACCEPT_TOKEN(aux_sym__include_directive_token4);
       END_STATE();
     case 265:
-      ACCEPT_TOKEN(anon_sym_GT);
+      ACCEPT_TOKEN(aux_sym__include_directive_token4);
       if (lookahead == '!' ||
           lookahead == '#' ||
           lookahead == '+' ||
           lookahead == '^') ADVANCE(289);
       END_STATE();
     case 266:
-      ACCEPT_TOKEN(aux_sym__include_directive_token3);
+      ACCEPT_TOKEN(aux_sym__include_directive_token5);
       END_STATE();
     case 267:
-      ACCEPT_TOKEN(aux_sym__include_directive_token3);
+      ACCEPT_TOKEN(aux_sym__include_directive_token5);
       if (lookahead == '\t') ADVANCE(267);
       if (lookahead == ' ') ADVANCE(267);
       if (lookahead == '"') ADVANCE(12);
@@ -2305,7 +2305,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '>') ADVANCE(268);
       END_STATE();
     case 268:
-      ACCEPT_TOKEN(aux_sym__include_directive_token3);
+      ACCEPT_TOKEN(aux_sym__include_directive_token5);
       if (lookahead != 0 &&
           lookahead != '\n' &&
           lookahead != '\r' &&
@@ -2352,13 +2352,13 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(aux_sym__warn_directive_token1);
       END_STATE();
     case 280:
-      ACCEPT_TOKEN(anon_sym_COMMA);
+      ACCEPT_TOKEN(aux_sym__warn_directive_token3);
       END_STATE();
     case 281:
-      ACCEPT_TOKEN(aux_sym__warn_directive_token3);
+      ACCEPT_TOKEN(aux_sym__warn_directive_token4);
       END_STATE();
     case 282:
-      ACCEPT_TOKEN(aux_sym__warn_directive_token3);
+      ACCEPT_TOKEN(aux_sym__warn_directive_token4);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'Z') ||
           lookahead == '_' ||
@@ -2395,7 +2395,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(aux_sym__directive_boolean_token1);
       END_STATE();
     case 288:
-      ACCEPT_TOKEN(anon_sym_COLON_COLON);
+      ACCEPT_TOKEN(aux_sym_hotkey_token1);
       END_STATE();
     case 289:
       ACCEPT_TOKEN(sym__hotkey_modifier_prefix);
@@ -2499,7 +2499,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == 0x212a) ADVANCE(336);
       END_STATE();
     case 296:
-      ACCEPT_TOKEN(anon_sym_COLON);
+      ACCEPT_TOKEN(aux_sym_label_token1);
       if (lookahead == ':') ADVANCE(288);
       END_STATE();
     case 297:
@@ -3269,9 +3269,9 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [aux_sym__hotstring_directive_token2] = ACTIONS(1),
     [aux_sym__hotstring_directive_token3] = ACTIONS(1),
     [aux_sym__include_directive_token1] = ACTIONS(1),
-    [anon_sym_LT] = ACTIONS(1),
     [aux_sym__include_directive_token2] = ACTIONS(1),
-    [anon_sym_GT] = ACTIONS(1),
+    [aux_sym__include_directive_token3] = ACTIONS(1),
+    [aux_sym__include_directive_token4] = ACTIONS(1),
     [aux_sym__include_again_directive_token1] = ACTIONS(1),
     [aux_sym__input_level_directive_token1] = ACTIONS(1),
     [aux_sym__max_threads_directive_token1] = ACTIONS(1),
@@ -3285,13 +3285,13 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [aux_sym__use_hook_directive_token1] = ACTIONS(1),
     [aux_sym__warn_directive_token1] = ACTIONS(1),
     [aux_sym__warn_directive_token2] = ACTIONS(1),
-    [anon_sym_COMMA] = ACTIONS(1),
     [aux_sym__warn_directive_token3] = ACTIONS(1),
+    [aux_sym__warn_directive_token4] = ACTIONS(1),
     [sym__win_activate_force_directive] = ACTIONS(1),
-    [anon_sym_COLON_COLON] = ACTIONS(1),
+    [aux_sym_hotkey_token1] = ACTIONS(1),
     [sym__hotkey_modifier_prefix] = ACTIONS(1),
     [sym__hotkey_modifier_suffix] = ACTIONS(1),
-    [anon_sym_COLON] = ACTIONS(1),
+    [aux_sym_label_token1] = ACTIONS(1),
     [sym_string] = ACTIONS(1),
     [sym_escape] = ACTIONS(1),
     [sym__decimal_integer] = ACTIONS(1),
@@ -3516,7 +3516,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(137), 1,
       aux_sym_source_file_token1,
     ACTIONS(139), 1,
-      aux_sym__hotstring_directive_token4,
+      aux_sym__hotstring_directive_token5,
     ACTIONS(142), 1,
       sym_escape,
     STATE(9), 1,
@@ -3534,7 +3534,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(147), 1,
       aux_sym_source_file_token1,
     ACTIONS(149), 1,
-      aux_sym__hotstring_directive_token4,
+      aux_sym__hotstring_directive_token5,
     ACTIONS(151), 1,
       sym_escape,
     STATE(9), 1,
@@ -3583,9 +3583,9 @@ static const uint16_t ts_small_parse_table[] = {
       sym__directive_boolean,
   [185] = 2,
     ACTIONS(171), 1,
-      anon_sym_COLON,
+      aux_sym_label_token1,
     ACTIONS(169), 2,
-      anon_sym_COLON_COLON,
+      aux_sym_hotkey_token1,
       sym__hotkey_modifier_suffix,
   [193] = 1,
     ACTIONS(173), 3,
@@ -3629,13 +3629,13 @@ static const uint16_t ts_small_parse_table[] = {
       sym_integer,
   [249] = 2,
     ACTIONS(187), 1,
-      aux_sym__hotstring_directive_token4,
+      aux_sym__hotstring_directive_token5,
     ACTIONS(185), 2,
       aux_sym_source_file_token1,
       sym_escape,
   [257] = 3,
     ACTIONS(149), 1,
-      aux_sym__hotstring_directive_token4,
+      aux_sym__hotstring_directive_token5,
     ACTIONS(151), 1,
       sym_escape,
     STATE(11), 1,
@@ -3654,26 +3654,26 @@ static const uint16_t ts_small_parse_table[] = {
       aux_sym__warn_directive_token2,
   [284] = 1,
     ACTIONS(169), 2,
-      anon_sym_COLON_COLON,
+      aux_sym_hotkey_token1,
       sym__hotkey_modifier_suffix,
   [289] = 2,
     ACTIONS(198), 1,
-      anon_sym_COLON_COLON,
+      aux_sym_hotkey_token1,
     ACTIONS(200), 1,
       sym__hotkey_modifier_suffix,
   [296] = 2,
     ACTIONS(202), 1,
-      anon_sym_LT,
+      aux_sym__include_directive_token2,
     ACTIONS(204), 1,
-      aux_sym__include_directive_token3,
+      aux_sym__include_directive_token5,
   [303] = 2,
     ACTIONS(206), 1,
       aux_sym_source_file_token1,
     ACTIONS(208), 1,
-      anon_sym_COMMA,
+      aux_sym__warn_directive_token3,
   [310] = 2,
     ACTIONS(210), 1,
-      anon_sym_COLON_COLON,
+      aux_sym_hotkey_token1,
     ACTIONS(212), 1,
       sym__hotkey_modifier_suffix,
   [317] = 1,
@@ -3682,13 +3682,13 @@ static const uint16_t ts_small_parse_table[] = {
       sym__hotstring_option,
   [322] = 1,
     ACTIONS(216), 1,
-      anon_sym_COLON_COLON,
+      aux_sym_hotkey_token1,
   [326] = 1,
     ACTIONS(218), 1,
       aux_sym_source_file_token1,
   [330] = 1,
     ACTIONS(220), 1,
-      aux_sym__include_directive_token2,
+      aux_sym__include_directive_token3,
   [334] = 1,
     ACTIONS(222), 1,
       aux_sym_source_file_token1,
@@ -3727,13 +3727,13 @@ static const uint16_t ts_small_parse_table[] = {
       aux_sym_source_file_token1,
   [382] = 1,
     ACTIONS(246), 1,
-      aux_sym__include_directive_token3,
+      aux_sym__include_directive_token5,
   [386] = 1,
     ACTIONS(248), 1,
       ts_builtin_sym_end,
   [390] = 1,
     ACTIONS(250), 1,
-      anon_sym_COLON_COLON,
+      aux_sym_hotkey_token1,
   [394] = 1,
     ACTIONS(252), 1,
       aux_sym__single_instance_directive_token2,
@@ -3751,10 +3751,10 @@ static const uint16_t ts_small_parse_table[] = {
       aux_sym_source_file_token1,
   [414] = 1,
     ACTIONS(262), 1,
-      anon_sym_GT,
+      aux_sym__include_directive_token4,
   [418] = 1,
     ACTIONS(264), 1,
-      aux_sym__warn_directive_token3,
+      aux_sym__warn_directive_token4,
   [422] = 1,
     ACTIONS(266), 1,
       aux_sym_source_file_token1,
@@ -3781,7 +3781,7 @@ static const uint16_t ts_small_parse_table[] = {
       aux_sym_source_file_token1,
   [454] = 1,
     ACTIONS(282), 1,
-      anon_sym_SPACE,
+      aux_sym__hotstring_directive_token4,
   [458] = 1,
     ACTIONS(284), 1,
       aux_sym_source_file_token1,

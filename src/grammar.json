@@ -242,8 +242,9 @@
             {
               "type": "IMMEDIATE_TOKEN",
               "content": {
-                "type": "STRING",
-                "value": " "
+                "type": "PATTERN",
+                "value": " ",
+                "flags": "i"
               }
             },
             {
@@ -306,8 +307,9 @@
               "flags": "i"
             },
             {
-              "type": "STRING",
-              "value": "<"
+              "type": "PATTERN",
+              "value": "<",
+              "flags": "i"
             },
             {
               "type": "ALIAS",
@@ -323,8 +325,9 @@
               "value": "string"
             },
             {
-              "type": "STRING",
-              "value": ">"
+              "type": "PATTERN",
+              "value": ">",
+              "flags": "i"
             }
           ]
         },
@@ -554,8 +557,9 @@
                       "type": "SEQ",
                       "members": [
                         {
-                          "type": "STRING",
-                          "value": ","
+                          "type": "PATTERN",
+                          "value": ",",
+                          "flags": "i"
                         },
                         {
                           "type": "PATTERN",
@@ -647,8 +651,9 @@
         {
           "type": "IMMEDIATE_TOKEN",
           "content": {
-            "type": "STRING",
-            "value": "::"
+            "type": "PATTERN",
+            "value": "::",
+            "flags": "i"
           }
         }
       ]
@@ -687,8 +692,9 @@
         {
           "type": "IMMEDIATE_TOKEN",
           "content": {
-            "type": "STRING",
-            "value": ":"
+            "type": "PATTERN",
+            "value": ":",
+            "flags": "i"
           }
         }
       ]
