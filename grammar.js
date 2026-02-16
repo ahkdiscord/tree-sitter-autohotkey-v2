@@ -16,7 +16,8 @@ module.exports = grammar({
   word: $ => $.name,
 
   rules: {
-    source_file: $ => repeat(seq(choice($.directive, $.hotkey, $.hotstring, $.label), /(\r?\n)+/i)),
+    source_file: $ => seq($._thing, repeat(seq(/(\r?\n)+/i, optional($._thing)))),
+    _thing: $ => choice($.directive, $.hotkey, $.hotstring, $.label, $._statement),
 
     directive: $ =>
       choice(
@@ -96,10 +97,14 @@ module.exports = grammar({
         token.immediate(/::/i),
         alias(choice(/[^\r\n]+/i, $.escape), "replacement"),
       ),
+    _hotstring_option: $ => /[*?BCORSTXZ]0?|C1|K-?\d+|P\d+|S[IPE]/i,
 
     label: $ => seq($.name, token.immediate(/:/i)),
 
-    _hotstring_option: $ => /[*?BCORSTXZ]0?|C1|K-?\d+|P\d+|S[IPE]/i,
+    _statement: $ => choice($.call_statement),
+    call_statement: $ => seq(alias($.name, "function_name"), optional($._arguments)),
+    _arguments: $ => seq($._argument, repeat(seq(/,/i, optional($._argument)))),
+    _argument: $ => $._expression,
 
     _expression: $ => choice($.integer, $.string),
 

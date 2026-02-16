@@ -1,5 +1,24 @@
 [
   {
+    "type": "call_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "directive",
     "named": true,
     "fields": {},
@@ -69,8 +88,12 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "call_statement",
+          "named": true
+        },
         {
           "type": "directive",
           "named": true
@@ -127,6 +150,10 @@
   {
     "type": "escape",
     "named": true
+  },
+  {
+    "type": "function_name",
+    "named": false
   },
   {
     "type": "modifiers",
