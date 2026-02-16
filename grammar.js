@@ -11,8 +11,11 @@ module.exports = grammar({
   name: "autohotkey_v2",
 
   extras: $ => [/[ \t]+/i],
+
+  word: $ => $.name,
+
   rules: {
-    source_file: $ => repeat(choice($.directive, $.label)),
+    source_file: $ => repeat(seq(choice($.directive, $.hotkey, $.label), /\r?\n/i)),
 
     directive: $ =>
       choice(
@@ -71,6 +74,17 @@ module.exports = grammar({
     _win_activate_force_directive: $ => /#WinActivateForce/i,
     _directive_string: $ => alias(/[^\r\n"' ][^\r\n"']*|"[^\r\n"]*"/i, $.string),
     _directive_boolean: $ => alias(/true|false|0|1/i, $.boolean),
+
+    hotkey: $ =>
+      seq(
+        alias(repeat($._hotkey_modifier_prefix), "modifiers"),
+        alias($._hotkey_trigger, "trigger"),
+        alias(optional($._hotkey_modifier_suffix), "modifiers"),
+        token.immediate("::"),
+      ),
+    _hotkey_modifier_prefix: $ => /[<>]?[#!^+]|[*~$]/i,
+    _hotkey_trigger: $ => choice($.name, /[^\r\n:]/i),
+    _hotkey_modifier_suffix: $ => /up/i,
 
     label: $ => seq($.name, token.immediate(":")),
 

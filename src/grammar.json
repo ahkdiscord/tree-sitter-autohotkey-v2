@@ -1,19 +1,34 @@
 {
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "autohotkey_v2",
+  "word": "name",
   "rules": {
     "source_file": {
       "type": "REPEAT",
       "content": {
-        "type": "CHOICE",
+        "type": "SEQ",
         "members": [
           {
-            "type": "SYMBOL",
-            "name": "directive"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "directive"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "hotkey"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "label"
+              }
+            ]
           },
           {
-            "type": "SYMBOL",
-            "name": "label"
+            "type": "PATTERN",
+            "value": "\\r?\\n",
+            "flags": "i"
           }
         ]
       }
@@ -587,6 +602,80 @@
       },
       "named": true,
       "value": "boolean"
+    },
+    "hotkey": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_hotkey_modifier_prefix"
+            }
+          },
+          "named": false,
+          "value": "modifiers"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_hotkey_trigger"
+          },
+          "named": false,
+          "value": "trigger"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_hotkey_modifier_suffix"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          "named": false,
+          "value": "modifiers"
+        },
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "::"
+          }
+        }
+      ]
+    },
+    "_hotkey_modifier_prefix": {
+      "type": "PATTERN",
+      "value": "[<>]?[#!^+]|[*~$]",
+      "flags": "i"
+    },
+    "_hotkey_trigger": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^\\r\\n:]",
+          "flags": "i"
+        }
+      ]
+    },
+    "_hotkey_modifier_suffix": {
+      "type": "PATTERN",
+      "value": "up",
+      "flags": "i"
     },
     "label": {
       "type": "SEQ",

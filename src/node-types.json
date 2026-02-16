@@ -23,6 +23,11 @@
     }
   },
   {
+    "type": "hotkey",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "integer",
     "named": true,
     "fields": {}
@@ -43,6 +48,11 @@
     }
   },
   {
+    "type": "modifiers",
+    "named": false,
+    "fields": {}
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
@@ -53,6 +63,10 @@
       "types": [
         {
           "type": "directive",
+          "named": true
+        },
+        {
+          "type": "hotkey",
           "named": true
         },
         {
@@ -78,6 +92,21 @@
     }
   },
   {
+    "type": "trigger",
+    "named": false,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": " ",
     "named": false
   },
@@ -87,6 +116,10 @@
   },
   {
     "type": ":",
+    "named": false
+  },
+  {
+    "type": "::",
     "named": false
   },
   {
@@ -104,6 +137,10 @@
   {
     "type": "escape",
     "named": true
+  },
+  {
+    "type": "modifiers",
+    "named": false
   },
   {
     "type": "name",
