@@ -120,6 +120,7 @@ module.exports = grammar({
         $.loop_read_statement,
         $.loop_reg_statement,
         $.return_statement,
+        $.switch_statement,
         $.throw_statement,
         $.try_statement,
         $.while_statement,
@@ -185,7 +186,19 @@ module.exports = grammar({
         optional($.until_statement),
       ),
     return_statement: $ => seq(alias(/return/, "keyword"), $._expression),
-    // TODO: switch_statement
+    switch_statement: $ =>
+      seq(
+        alias(/switch/, "keyword"),
+        $._expression,
+        /\{/i,
+        repeat(
+          choice(
+            seq(alias(/case/i, "keyword"), $._expression, /:/i, $.block),
+            seq(alias(/default/i, "keyword"), /:/i, $.block),
+          ),
+        ),
+        /\}/i,
+      ),
     throw_statement: $ => seq(alias(/throw/i, "keyword"), optional($._expression)),
     try_statement: $ =>
       seq(
