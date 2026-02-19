@@ -114,6 +114,11 @@ module.exports = grammar({
         $.for_statement,
         $.goto_statement,
         $.if_statement,
+        $.loop_statement,
+        $.loop_files_statement,
+        $.loop_parse_statement,
+        $.loop_read_statement,
+        $.loop_reg_statement,
         $.return_statement,
         $.throw_statement,
         $.try_statement,
@@ -141,7 +146,44 @@ module.exports = grammar({
         repeat(seq(alias(/else/i, "keyword"), alias(/if/i, "keyword"), $._expression, $.block)),
         optional(seq(alias(/else/i, "keyword"), $.block)),
       ),
-    // TODO: loop_statement
+    loop_statement: $ => seq(alias(/loop/i, "keyword"), $._expression, $.block, optional($.until_statement)),
+    loop_files_statement: $ =>
+      seq(
+        alias(/loop/i, "keyword"),
+        alias(/files/i, "keyword"),
+        $._expression,
+        optional(seq(/,/i, $._expression)),
+        $.block,
+        optional($.until_statement),
+      ),
+    loop_parse_statement: $ =>
+      seq(
+        alias(/loop/i, "keyword"),
+        alias(/parse/i, "keyword"),
+        $._expression,
+        optional(seq(/,/i, $._expression)),
+        optional(seq(/,/i, $._expression)),
+        $.block,
+        optional($.until_statement),
+      ),
+    loop_read_statement: $ =>
+      seq(
+        alias(/loop/i, "keyword"),
+        alias(/read/i, "keyword"),
+        $._expression,
+        optional(seq(/,/i, $._expression)),
+        $.block,
+        optional($.until_statement),
+      ),
+    loop_reg_statement: $ =>
+      seq(
+        alias(/loop/i, "keyword"),
+        alias(/reg/i, "keyword"),
+        $._expression,
+        optional(seq(/,/i, $._expression)),
+        $.block,
+        optional($.until_statement),
+      ),
     return_statement: $ => seq(alias(/return/, "keyword"), $._expression),
     // TODO: switch_statement
     throw_statement: $ => seq(alias(/throw/i, "keyword"), optional($._expression)),
