@@ -101,7 +101,7 @@ module.exports = grammar({
 
     label: $ => seq(alias($.name, "label_name"), token.immediate(/:/i)),
 
-    _statement: $ => seq(choice($.call_statement, $.control_flow_statement), $._newline),
+    _statement: $ => choice($.call_statement, $.control_flow_statement),
 
     call_statement: $ => seq(alias($.name, "function_name"), optional($._arguments)),
     _arguments: $ => seq($._argument, repeat(seq(/,/i, optional($._argument)))),
@@ -135,55 +135,66 @@ module.exports = grammar({
           alias(/in/i, "keyword"),
           $._expression,
           $.block,
-          optional($.until_statement),
+          optional(choice($.until_statement, $.else_branch)),
         ),
       ),
     goto_statement: $ => seq(alias(/goto/i, "keyword"), choice(alias($.name, "label_name"), seq(/\(/i, $._expression, /\)/i))),
     if_statement: $ =>
-      seq(
-        alias(/if/i, "keyword"),
-        $._expression,
-        $.block,
-        repeat(seq(alias(/else/i, "keyword"), alias(/if/i, "keyword"), $._expression, $.block)),
-        optional(seq(alias(/else/i, "keyword"), $.block)),
+      prec.right(
+        seq(
+          alias(/if/i, "keyword"),
+          $._expression,
+          $.block,
+          repeat(seq(alias(/else/i, "keyword"), alias(/if/i, "keyword"), $._expression, $.block)),
+          optional(seq(alias(/else/i, "keyword"), $.block)),
+        ),
       ),
-    loop_statement: $ => seq(alias(/loop/i, "keyword"), $._expression, $.block, optional($.until_statement)),
+    loop_statement: $ =>
+      prec.right(seq(alias(/loop/i, "keyword"), $._expression, $.block, optional(choice($.until_statement, $.else_branch)))),
     loop_files_statement: $ =>
-      seq(
-        alias(/loop/i, "keyword"),
-        alias(/files/i, "keyword"),
-        $._expression,
-        optional(seq(/,/i, $._expression)),
-        $.block,
-        optional($.until_statement),
+      prec.right(
+        seq(
+          alias(/loop/i, "keyword"),
+          alias(/files/i, "keyword"),
+          $._expression,
+          optional(seq(/,/i, $._expression)),
+          $.block,
+          optional(choice($.until_statement, $.else_branch)),
+        ),
       ),
     loop_parse_statement: $ =>
-      seq(
-        alias(/loop/i, "keyword"),
-        alias(/parse/i, "keyword"),
-        $._expression,
-        optional(seq(/,/i, $._expression)),
-        optional(seq(/,/i, $._expression)),
-        $.block,
-        optional($.until_statement),
+      prec.right(
+        seq(
+          alias(/loop/i, "keyword"),
+          alias(/parse/i, "keyword"),
+          $._expression,
+          optional(seq(/,/i, $._expression)),
+          optional(seq(/,/i, $._expression)),
+          $.block,
+          optional(choice($.until_statement, $.else_branch)),
+        ),
       ),
     loop_read_statement: $ =>
-      seq(
-        alias(/loop/i, "keyword"),
-        alias(/read/i, "keyword"),
-        $._expression,
-        optional(seq(/,/i, $._expression)),
-        $.block,
-        optional($.until_statement),
+      prec.right(
+        seq(
+          alias(/loop/i, "keyword"),
+          alias(/read/i, "keyword"),
+          $._expression,
+          optional(seq(/,/i, $._expression)),
+          $.block,
+          optional(choice($.until_statement, $.else_branch)),
+        ),
       ),
     loop_reg_statement: $ =>
-      seq(
-        alias(/loop/i, "keyword"),
-        alias(/reg/i, "keyword"),
-        $._expression,
-        optional(seq(/,/i, $._expression)),
-        $.block,
-        optional($.until_statement),
+      prec.right(
+        seq(
+          alias(/loop/i, "keyword"),
+          alias(/reg/i, "keyword"),
+          $._expression,
+          optional(seq(/,/i, $._expression)),
+          $.block,
+          optional(choice($.until_statement, $.else_branch)),
+        ),
       ),
     return_statement: $ => seq(alias(/return/, "keyword"), $._expression),
     switch_statement: $ =>
@@ -201,25 +212,28 @@ module.exports = grammar({
       ),
     throw_statement: $ => seq(alias(/throw/i, "keyword"), optional($._expression)),
     try_statement: $ =>
-      seq(
-        alias(/try/i, "keyword"),
-        choice($._statement, $.block),
-        optional(
-          seq(
-            alias(/catch/i, "keyword"),
-            optional(alias($.name, "class_name")),
-            optional(seq(alias(/as/i, "keyword"), $._variable)),
-            $.block,
+      prec.right(
+        seq(
+          alias(/try/i, "keyword"),
+          choice($._statement, $.block),
+          optional(
+            seq(
+              alias(/catch/i, "keyword"),
+              optional(alias($.name, "class_name")),
+              optional(seq(alias(/as/i, "keyword"), $._variable)),
+              $.block,
+            ),
           ),
+          optional(seq(alias(/else/i, "keyword"), $.block)),
+          optional(seq(alias(/finally/i, "keyword"), $.block)),
         ),
-        optional(seq(alias(/else/i, "keyword"), $.block)),
-        optional(seq(alias(/finally/i, "keyword"), $.block)),
       ),
-    while_statement: $ => seq(alias(/while/i, "keyword"), $._expression, $.block, optional($.until_statement)),
+    while_statement: $ => prec.right(seq(alias(/while/i, "keyword"), $._expression, $.block, optional($.else_branch))),
 
     block: $ => choice(seq($._newline, $._statement), seq(/\{/i, repeat($._statement), /\}/i)),
 
     until_statement: $ => seq(alias(/until/i, "keyword"), $._expression),
+    else_branch: $ => seq(alias(/else/i, "keyword"), $.block),
 
     _variables: $ => seq($._variable, repeat(seq(/,/i, optional($._variable)))),
     _variable: $ => alias($.name, "variable_name"),

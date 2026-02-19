@@ -142,6 +142,21 @@
     }
   },
   {
+    "type": "else_branch",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "for_statement",
     "named": true,
     "fields": {},
@@ -151,6 +166,10 @@
       "types": [
         {
           "type": "block",
+          "named": true
+        },
+        {
+          "type": "else_branch",
           "named": true
         },
         {
@@ -243,6 +262,10 @@
           "named": true
         },
         {
+          "type": "else_branch",
+          "named": true
+        },
+        {
           "type": "integer",
           "named": true
         },
@@ -267,6 +290,10 @@
       "types": [
         {
           "type": "block",
+          "named": true
+        },
+        {
+          "type": "else_branch",
           "named": true
         },
         {
@@ -297,6 +324,10 @@
           "named": true
         },
         {
+          "type": "else_branch",
+          "named": true
+        },
+        {
           "type": "integer",
           "named": true
         },
@@ -324,6 +355,10 @@
           "named": true
         },
         {
+          "type": "else_branch",
+          "named": true
+        },
+        {
           "type": "integer",
           "named": true
         },
@@ -348,6 +383,10 @@
       "types": [
         {
           "type": "block",
+          "named": true
+        },
+        {
+          "type": "else_branch",
           "named": true
         },
         {
@@ -557,15 +596,15 @@
           "named": true
         },
         {
+          "type": "else_branch",
+          "named": true
+        },
+        {
           "type": "integer",
           "named": true
         },
         {
           "type": "string",
-          "named": true
-        },
-        {
-          "type": "until_statement",
           "named": true
         }
       ]
