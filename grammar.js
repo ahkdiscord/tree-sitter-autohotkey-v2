@@ -150,7 +150,9 @@ module.exports = grammar({
         ),
       ),
     loop_statement: $ =>
-      prec.right(seq(alias(/loop/i, "keyword"), $._expression, $.block, optional(choice($.until_statement, $.else_branch)))),
+      prec.right(
+        seq(alias(/loop/i, "keyword"), optional($._expression), $.block, optional(choice($.until_statement, $.else_branch))),
+      ),
     loop_files_statement: $ =>
       prec.right(
         seq(
