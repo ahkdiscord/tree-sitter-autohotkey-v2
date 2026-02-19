@@ -11,12 +11,12 @@
 module.exports = grammar({
   name: "autohotkey_v2",
 
-  extras: $ => [/[ \t]+/i],
+  extras: $ => [/[ \t\r\n]+/i],
 
   word: $ => $.name,
 
   rules: {
-    source_file: $ => seq($._thing, repeat(seq(/(\r?\n)+/i, optional($._thing)))),
+    source_file: $ => optional(seq($._thing, repeat(seq(repeat1($._newline), $._thing)))),
     _thing: $ => choice($.directive, $.hotkey, $.hotstring, $.label, $._statement),
 
     directive: $ =>
@@ -99,18 +99,81 @@ module.exports = grammar({
       ),
     _hotstring_option: $ => /[*?BCORSTXZ]0?|C1|K-?\d+|P\d+|S[IPE]/i,
 
-    label: $ => seq($.name, token.immediate(/:/i)),
+    label: $ => seq(alias($.name, "label_name"), token.immediate(/:/i)),
 
-    _statement: $ => choice($.call_statement),
+    _statement: $ => seq(choice($.call_statement, $.control_flow_statement), $._newline),
+
     call_statement: $ => seq(alias($.name, "function_name"), optional($._arguments)),
     _arguments: $ => seq($._argument, repeat(seq(/,/i, optional($._argument)))),
     _argument: $ => $._expression,
+
+    control_flow_statement: $ =>
+      choice(
+        $.break_statement,
+        $.continue_statement,
+        $.for_statement,
+        $.goto_statement,
+        $.if_statement,
+        $.return_statement,
+        $.throw_statement,
+        $.try_statement,
+        $.while_statement,
+      ),
+    break_statement: $ => alias(/break/i, "keyword"),
+    continue_statement: $ => alias(/continue/i, "keyword"),
+    for_statement: $ =>
+      prec.right(
+        seq(
+          alias(/for/i, "keyword"),
+          choice($._variables, seq(/\(/i, $._variables, /\)/i)),
+          alias(/in/i, "keyword"),
+          $._expression,
+          $.block,
+          optional($.until_statement),
+        ),
+      ),
+    goto_statement: $ => seq(alias(/goto/i, "keyword"), choice(alias($.name, "label_name"), seq(/\(/i, $._expression, /\)/i))),
+    if_statement: $ =>
+      seq(
+        alias(/if/i, "keyword"),
+        $._expression,
+        $.block,
+        repeat(seq(alias(/else/i, "keyword"), alias(/if/i, "keyword"), $._expression, $.block)),
+        optional(seq(alias(/else/i, "keyword"), $.block)),
+      ),
+    // TODO: loop_statement
+    return_statement: $ => seq(alias(/return/, "keyword"), $._expression),
+    // TODO: switch_statement
+    throw_statement: $ => seq(alias(/throw/i, "keyword"), optional($._expression)),
+    try_statement: $ =>
+      seq(
+        alias(/try/i, "keyword"),
+        choice($._statement, $.block),
+        optional(
+          seq(
+            alias(/catch/i, "keyword"),
+            optional(alias($.name, "class_name")),
+            optional(seq(alias(/as/i, "keyword"), $._variable)),
+            $.block,
+          ),
+        ),
+        optional(seq(alias(/else/i, "keyword"), $.block)),
+        optional(seq(alias(/finally/i, "keyword"), $.block)),
+      ),
+    while_statement: $ => seq(alias(/while/i, "keyword"), $._expression, $.block, optional($.until_statement)),
+
+    block: $ => choice(seq($._newline, $._statement), seq(/\{/i, repeat($._statement), /\}/i)),
+
+    until_statement: $ => seq(alias(/until/i, "keyword"), $._expression),
+
+    _variables: $ => seq($._variable, repeat(seq(/,/i, optional($._variable)))),
+    _variable: $ => alias($.name, "variable_name"),
 
     _expression: $ => choice($.integer, $.string),
 
     name: $ => /[a-z_][a-z0-9_]*/i,
 
-    string: $ => /"[^\r\n]"/i,
+    string: $ => /"[^\r\n"]*"/i,
     escape: $ => /`[`;:{nrbtsvaf"']/i,
 
     integer: $ => choice($._decimal_integer, $._hexadecimal_integer),
@@ -118,5 +181,7 @@ module.exports = grammar({
     _hexadecimal_integer: $ => /0x\d+/i,
 
     boolean: $ => /true|false/i,
+
+    _newline: $ => /\r?\n/i,
   },
 });
