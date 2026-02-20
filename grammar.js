@@ -103,7 +103,7 @@ module.exports = grammar({
 
     _statement: $ => choice($.call_statement, $.control_flow_statement),
 
-    call_statement: $ => seq(alias($.name, "function_name"), optional($._arguments)),
+    call_statement: $ => prec.right(seq(alias($.name, "function_name"), optional($._arguments))),
     _arguments: $ => seq($._argument, repeat(seq(/,/i, optional($._argument)))),
     _argument: $ => $._expression,
 
@@ -201,7 +201,7 @@ module.exports = grammar({
     return_statement: $ => seq(alias(/return/, "keyword"), $._expression),
     switch_statement: $ =>
       seq(
-        alias(/switch/, "keyword"),
+        alias(/switch/i, "keyword"),
         $._expression,
         /\{/i,
         repeat(
@@ -212,7 +212,7 @@ module.exports = grammar({
         ),
         /\}/i,
       ),
-    throw_statement: $ => seq(alias(/throw/i, "keyword"), optional($._expression)),
+    throw_statement: $ => prec.right(seq(alias(/throw/i, "keyword"), optional($._expression))),
     try_statement: $ =>
       prec.right(
         seq(
@@ -240,9 +240,9 @@ module.exports = grammar({
     _variables: $ => seq($._variable, repeat(seq(/,/i, optional($._variable)))),
     _variable: $ => alias($.name, "variable_name"),
 
-    _expression: $ => choice($.integer, $.string),
+    _expression: $ => choice($._value),
 
-    name: $ => /[a-z_][a-z0-9_]*/i,
+    _value: $ => choice($.boolean, $.integer, $.float, $.string, alias($.name, "variable_name")),
 
     string: $ => /"[^\r\n"]*"/i,
     escape: $ => /`[`;:{nrbtsvaf"']/i,
@@ -251,7 +251,13 @@ module.exports = grammar({
     _decimal_integer: $ => /\d+/i,
     _hexadecimal_integer: $ => /0x\d+/i,
 
+    float: $ => choice($._simple_float, $._scientific_float),
+    _simple_float: $ => choice(/[0-9]+\.[0-9]*/i, /\.[0-9]+/i),
+    _scientific_float: $ => choice(/[0-9]+\.[0-9]*e[+-]?[0-9]+/i, /\.?[0-9]+e[+-]?[0-9]+/i),
+
     boolean: $ => /true|false/i,
+
+    name: $ => /[a-z_][a-z0-9_]*/i,
 
     _newline: $ => /\r?\n/i,
   },
