@@ -195,6 +195,7 @@ module.exports = grammar({
         seq(
           kw(/loop/i),
           kw(/files/i),
+          optional(/,/i),
           $._expression,
           optional(seq(/,/i, $._expression)),
           $.block,
@@ -206,6 +207,7 @@ module.exports = grammar({
         seq(
           kw(/loop/i),
           kw(/parse/i),
+          optional(/,/i),
           $._expression,
           optional(seq(/,/i, $._expression)),
           optional(seq(/,/i, $._expression)),
@@ -218,6 +220,7 @@ module.exports = grammar({
         seq(
           kw(/loop/i),
           kw(/read/i),
+          optional(/,/i),
           $._expression,
           optional(seq(/,/i, $._expression)),
           $.block,
@@ -229,6 +232,7 @@ module.exports = grammar({
         seq(
           kw(/loop/i),
           kw(/reg/i),
+          optional(/,/i),
           $._expression,
           optional(seq(/,/i, $._expression)),
           $.block,
