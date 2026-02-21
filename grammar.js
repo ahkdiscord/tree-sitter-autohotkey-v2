@@ -141,7 +141,7 @@ module.exports = grammar({
 
     _statement: $ => choice($.call_statement, $.control_flow_statement),
 
-    call_statement: $ => prec.right(seq(alias($.name, "function_name"), $._hspace, optional($._arguments))),
+    call_statement: $ => prec.right(seq(alias($.name, "function_name"), optional(seq($._hspace, $._arguments)))),
     _arguments: $ =>
       choice(seq($._argument, repeat(seq(/,/i, optional($._argument)))), seq(repeat1(seq(/,/i, optional($._argument))))),
     _argument: $ => $._expression,

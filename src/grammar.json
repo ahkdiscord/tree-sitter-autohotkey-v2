@@ -845,15 +845,20 @@
             "value": "function_name"
           },
           {
-            "type": "SYMBOL",
-            "name": "_hspace"
-          },
-          {
             "type": "CHOICE",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "_arguments"
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_hspace"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_arguments"
+                  }
+                ]
               },
               {
                 "type": "BLANK"
